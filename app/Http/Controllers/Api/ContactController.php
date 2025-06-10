@@ -58,12 +58,12 @@ class ContactController extends Controller
         return response(null, Response::HTTP_NO_CONTENT);
     }
 
-    public function processScore(Contact $contact)
-    {
-         UpdateContactScore::dispatch($contact);
+    // public function processScore(Contact $contact)
+    // {
+    //      UpdateContactScore::dispatch($contact);
 
-        return response()->json([
-            'message' => 'Score atualizado com sucesso'
-        ]);
-    }
+    //     return response()->json([
+    //         'message' => 'Score atualizado com sucesso'
+    //     ]);
+    // }
 }
