@@ -4,10 +4,10 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Models\Contact;
-use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use App\Http\Requests\StoreContactRequest;
 use App\Http\Requests\UpdateContactRequest;
+use App\Http\Resources\ContactResource;
 
 
 class ContactController extends Controller
@@ -17,7 +17,7 @@ class ContactController extends Controller
      */
     public function index()
     {
-        return Contact::paginate();
+        return ContactResource::collection(Contact::paginate());
     }
 
     /**
@@ -28,15 +28,15 @@ class ContactController extends Controller
         //criar um novo contato
         $contact = Contact::create($request->validated());
 
-        return response($contact, Response::HTTP_CREATED);
+        return response(new ContactResource($contact), Response::HTTP_CREATED);
     }
 
     /**
      * Exibir contato pelo id(findOne).
      */
-    public function show(string $id)
+    public function show(Contact $contact)
     {
-        return Contact::find($id);
+        return new ContactResource($contact);
     }
 
     /**
@@ -46,15 +46,15 @@ class ContactController extends Controller
     {
         $contact->update($request->validated());
         
-        return $contact;
+        return new ContactResource($contact);
     }
 
     /**
      * remover contato(delete).
      */
-    public function destroy(string $id)
+    public function destroy(Contact $contact)
     {
-        Contact::destroy($id);
+        $contact->delete();
         return response(null, Response::HTTP_NO_CONTENT);
     }
 }
