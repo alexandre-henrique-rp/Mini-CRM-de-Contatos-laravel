@@ -4,10 +4,9 @@ Este projeto é uma API RESTful desenvolvida em Laravel para um Mini CRM de gest
 
 ## Feito Por
 
-* **Autor:** [Seu Nome Completo Aqui]
-* **Email:** [seu.email@exemplo.com]
-* **LinkedIn:** https://www.linkedin.com/help/linkedin/answer/a1631613
-
+* **Autor:** [Alexandre Henrique]
+* **Email:** [kingdevtec@gmail.com]
+* **LinkedIn:** (www.linkedin.com/in/dev-alexandre-henrique)
 ---
 
 ## 🚀 Tech Stack
