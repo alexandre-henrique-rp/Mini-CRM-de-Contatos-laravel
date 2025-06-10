@@ -60,7 +60,7 @@ class ContactController extends Controller
 
     public function processScore(Contact $contact)
     {
-        dispatch(new UpdateContactScore($contact));
+         UpdateContactScore::dispatch($contact);
 
         return response()->json([
             'message' => 'Score atualizado com sucesso'
