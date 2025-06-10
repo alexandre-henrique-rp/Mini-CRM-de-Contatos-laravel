@@ -6,7 +6,9 @@ use App\Http\Controllers\Controller;
 use App\Models\Contact;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
-use Illuminate\Support\Facades\Log;
+use App\Http\Requests\StoreContactRequest;
+use App\Http\Requests\UpdateContactRequest;
+
 
 class ContactController extends Controller
 {
@@ -21,17 +23,10 @@ class ContactController extends Controller
     /**
      * criar um novo contato(create).
      */
-    public function store(Request $request)
+    public function store(StoreContactRequest $request)
     {
-        //validação dos dados do formulário
-        $validadtedData = $request->validate([
-            'name' => 'required|string|max:255',
-            'email' => 'required|email|unique:contacts,email',
-            'phone' => 'required|string|max:20',
-        ]);
-
         //criar um novo contato
-        $contact = Contact::create($validadtedData);
+        $contact = Contact::create($request->validated());
 
         return response($contact, Response::HTTP_CREATED);
     }
@@ -47,18 +42,11 @@ class ContactController extends Controller
     /**
      * Atualizar contato(update).
      */
-    public function update(Request $request, string $id)
+    public function update(UpdateContactRequest $request, Contact $contact)
     {
-        $validadtedData = $request->validate([
-            'name' => 'sometimes|required|string|max:255',
-            'email' => 'sometimes|required|email|unique:contacts,email,' . $id,
-            'phone' => 'sometimes|required|string|max:20',
-        ]);
-
-        $contact = Contact::findOrFail($id); // Garante que o contato existe
-        $contact->update($validadtedData);
-        $contact->refresh();
-        return response($contact, Response::HTTP_OK);
+        $contact->update($request->validated());
+        
+        return $contact;
     }
 
     /**
