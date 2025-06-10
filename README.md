@@ -23,11 +23,13 @@ O projeto foi inteiramente desenvolvido dentro de um ambiente Docker encapsulado
 
 ## ⚙️ Como Começar (Getting Started)
 
-Para executar este projeto, necessita apenas de ter o **Docker Desktop** e o **Visual Studio Code** com a extensão [Dev Containers](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers) instalada.
+Para executar este projeto, necessita apenas de ter o **Docker** e o **Visual Studio Code** com a extensão [Dev Containers](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers) instalada.
+
+**Obs :** Docker su funciona bem em linux, fica a dica.
 
 1.  **Clone o Repositório:**
     ```bash
-    git clone [https://github.com/caminho/para/seu-repositorio.git](https://github.com/caminho/para/seu-repositorio.git)
+    git clone [https://github.com/alexandre-henrique-rp/Mini-CRM-de-Contatos-laravel/blob/main/README.md)
     cd seu-repositorio
     ```
 
