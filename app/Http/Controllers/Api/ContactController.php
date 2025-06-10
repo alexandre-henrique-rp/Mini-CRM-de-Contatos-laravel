@@ -8,7 +8,7 @@ use Illuminate\Http\Response;
 use App\Http\Requests\StoreContactRequest;
 use App\Http\Requests\UpdateContactRequest;
 use App\Http\Resources\ContactResource;
-
+use App\Jobs\UpdateContactScore;
 
 class ContactController extends Controller
 {
@@ -56,5 +56,14 @@ class ContactController extends Controller
     {
         $contact->delete();
         return response(null, Response::HTTP_NO_CONTENT);
+    }
+
+    public function processScore(Contact $contact)
+    {
+        dispatch(new UpdateContactScore($contact));
+
+        return response()->json([
+            'message' => 'Score atualizado com sucesso'
+        ]);
     }
 }

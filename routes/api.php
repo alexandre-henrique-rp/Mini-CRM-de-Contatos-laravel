@@ -20,3 +20,5 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::apiResource('contacts', ContactController::class);
+
+Route::post('contacts/{contact}/process-score', [\App\Http\Controllers\Api\ContactController::class, 'processScore'])->name('contacts.process-score');
